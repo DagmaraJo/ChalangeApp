@@ -1,19 +1,28 @@
 ﻿int number = 4566;
 string numText = number.ToString();
-char[] letersAsNumber = numText.ToArray();
 Console.WriteLine("Wyniki dla licby:  " + numText);
 
-List<char> leters = new() { '0', '1', '3', '4','5','6','7', '8', '9' };
+int[] digit = new int[10];
 
-foreach (var digit in leters)
+foreach (char letter in numText)
 {
-    int count = 0;
-    foreach (char leterAsNumber in letersAsNumber)
-    {
-        if (leterAsNumber == digit )
-        {
-            count++;
-        }
-    }
-    Console.WriteLine($"{digit} =>  {count}");
+    int letterValue = (int)Char.GetNumericValue(letter);
+    digit[letterValue]++;
+
 }
+for (var i = 0; i < 10; i++)
+
+    Console.WriteLine(i + " =>  " + digit[i]);
+
+
+
+
+
+
+
+
+
+
+
+
+
