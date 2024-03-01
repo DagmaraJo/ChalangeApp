@@ -1,60 +1,45 @@
-﻿User user1 = new User("Adam","367482893");
-User user2 = new User("Monika","74937592");
-User user3 = new User("Zuzia","462928465");
-User user4 = new User("Damian","29294746");
-
-user1.Login = "Marek";
-var name = user1.Login;
-user1.AddScore(5);
-var result = user1.Result;
-Console.WriteLine(result);
-var name = User.GameName;
-var pi = Math.PI;              // typ objektu zmienna statyczna ( constans), bez 'this.' !
+﻿using ChalangeApp;
 
 
-class User                          t w o r z e n i e   o b j e k t u
+Employee emp1 = new Employee("Jan", "Kowalski", "39");
+Employee emp2 = new Employee("Ewa", "Lorek","28");
+Employee emp3 = new Employee("Piotr", "Banach", "34");
+
+List<Employee> employees = new List<Employee>()
 {
-   
-    public static string GameName = "Diablo";
-    private string login;             // już niepotrzebna zminna           
-    private string password;
-    private int score;
-    private List<int> score = new List<int>();
+    emp1, emp2, emp3
+};
 
-    public User(string login, string password)
-    {
-        this.Login = login;          // bo tu w konstruktorze odwołujemy się do property w momencie jej utworzenia i zmieniamy na wielką literę
-        this.password = password;       {-----} KOSTRUKTOR
-      // this.score = 0;  zbędna     // gdy utworzymy new List<>int>() nad objektem User   
-    }
-    public string Login { get; private set; }  //  {;;} PROPERTY - PARAMETRY
-                                               // modyfikator postępu priv./ public
-    public string password { get; set; }    //  ;get-pobieramy  ;set-ustawiany z zewnątrz
+emp1.AddGrade(3);
+emp1.AddGrade(2);
+emp1.AddGrade(4);
+emp1.AddGrade(3);
+emp1.AddGrade(6);
 
-    public int Result { get; } // <-- set pusty!,bo będzie wywoływany z List<> score_ = , a get rozpisujemy następująco:
+emp2.AddGrade(2);
+emp2.AddGrade(4);
+emp2.AddGrade(5);
+emp2.AddGrade(6);
+emp2.AddGrade(7);
 
-    public int Result
-    {
-        get
-        {
-            return this.score.Sum();
-            ;-}  return = 0  !
-        }
-    }
-    public void AddScore(int score)        M E T O D A
-    {
-        this.score = this.score + score;
-        // this.score += score;            lub
-        // this.score += number;           dla _AddScore(int number)
-    }
+emp3.AddGrade(0);
+emp3.AddGrade(0);
+emp3.AddGrade(1);
+emp3.AddGrade(2);
+emp3.AddGrade(2);
 
-    public void AddScore(int number)
+Employee Best_Emp = null ;
+
+
+int best_Result = -1;
+foreach ( var emp in employees)
+{
+    if (emp.Result > best_Result)
     {
-        this.score.Add(number);      // ten [i] dodaje się do __= new List<int>();        
+        best_Result = emp.Result;
+        Best_Emp = (Employee)emp;
     }
 }
-    
-// user1.AddScore(35);
-// user2.AddScore(2);
-// var result = user1.Result;  Con.WrL(result); 37
-   
+if (Best_Emp != null)
+    Console.WriteLine("Employee of the week : " +Best_Emp.Name +" " +Best_Emp.Surname +"    best result :  " +best_Result +" scores");
+
