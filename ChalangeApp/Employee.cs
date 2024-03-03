@@ -1,12 +1,12 @@
 ﻿namespace ChalangeApp
 {
-    internal class Employee
+    public class Employee
     {
         public List<int> Grades = new List<int> ();
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
-        public string Age { get; private set; }
+        public string Age { get; set; }
        
 
         public Employee(string name, string surname, string age)
