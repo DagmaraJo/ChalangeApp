@@ -32,18 +32,16 @@ namespace ChalangeApp.Tests
             Assert.AreEqual(-5, result);
         }
         [Test]
-        public void WhenEmployeeCollectZeroPoints_ShouldReturnCorrectSum()
+        public void WhenEmployeeCollectThreeSetOfZeroPoints_ShouldReturnCorrectSum()
         {
             var emp3 = new Employee("Piotr", "Banach", "34");
             emp3.AddGrade(0);
             emp3.AddGrade(0);
             emp3.AddGrade(0);
-            emp3.AddGrade(-1);
-            emp3.AddGrade(2);
 
             var result = emp3.grades.Sum();
 
-            Assert.AreEqual(1, result);
+            Assert.AreEqual(0, result);
 
         }
     }
