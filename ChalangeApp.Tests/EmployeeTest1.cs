@@ -13,7 +13,7 @@ namespace ChalangeApp.Tests
             emp3.AddGrade(2);
             emp3.AddGrade(2);
 
-            var result = emp3.Grades.Sum();
+            var result = emp3.grades.Sum();
 
             Assert.AreEqual(5, result);
         }
@@ -23,13 +23,13 @@ namespace ChalangeApp.Tests
             var emp3 = new Employee("Piotr", "Banach", "34");
             emp3.AddGrade(0);
             emp3.AddGrade(0);
-            emp3.AddGrade(1);
-            emp3.AddGrade(2);
-            emp3.AddGrade(2);
+            emp3.AddGrade(-1);
+            emp3.AddGrade(-2);
+            emp3.AddGrade(-2);
 
-            var result = emp3.Grades.Sum();
+            var result = emp3.grades.Sum();
 
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(-5, result);
         }
         [Test]
         public void WhenEmployeeCollectZeroPoints_ShouldReturnCorrectSum()
@@ -37,13 +37,13 @@ namespace ChalangeApp.Tests
             var emp3 = new Employee("Piotr", "Banach", "34");
             emp3.AddGrade(0);
             emp3.AddGrade(0);
-            emp3.AddGrade(1);
-            emp3.AddGrade(2);
+            emp3.AddGrade(0);
+            emp3.AddGrade(-1);
             emp3.AddGrade(2);
 
-            var result = emp3.Grades.Sum();
+            var result = emp3.grades.Sum();
 
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(1, result);
 
         }
     }
