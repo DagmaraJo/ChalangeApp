@@ -42,7 +42,6 @@ namespace ChalangeApp.Tests
             var result = emp3.grades.Sum();
 
             Assert.AreEqual(0, result);
-
         }
     }
 
