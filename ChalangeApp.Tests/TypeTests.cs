@@ -3,17 +3,17 @@
     public class TypeTests
     {
         [Test]
-        public void GetUserShouldRetuenDifferentObjects()
+        public void GetEmployeeShouldRetuenDifferentObjects()
         {
-            var user1 = GetUser("Jan");
-            var user5 = GetUser("Jan");
+            var emp1 = GetEmployee("Jan", "Kowalski", "39");
+            var emp5 = GetEmployee("Jan", "Dobosz", "39");
 
 
-            Assert.AreNotEqual(user1, user5);
+            Assert.AreNotEqual(emp1, emp5);
         }
-        private User GetUser(string name)
+        private Employee GetEmployee(string name, string surname, string age)
         {
-            return new User(name);
+            return new Employee(name, surname, age);
         }
 
         [Test]
@@ -38,11 +38,6 @@
             Assert.AreEqual(employee1.Age, employee5.Age);
         }
 
-        private Employee GetEmployee(string name, string surname, string age)
-        {
-            return new Employee( name, surname, age);
-        }
-
         [Test]
         public void WhenCompareTheSameValue_ThenReturnEqual()
         {
@@ -52,5 +47,13 @@
             Assert.AreEqual(number1, number2);
         }
 
+        [Test]
+        public void CompareAverageGrades()
+        {
+            float grades1 = 3.78f;
+            float grades2 = 3.57f;
+
+            Assert.AreNotEqual(grades1, grades2);
+        }
     }
 }

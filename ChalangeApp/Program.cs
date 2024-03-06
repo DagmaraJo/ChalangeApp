@@ -26,18 +26,27 @@ emp3.AddGrade(1);
 emp3.AddGrade(2);
 emp3.AddGrade(2);
 
-Employee bestEmp = null;
-int bestResult = -1;
-foreach ( var emp in employees)
+//Employee bestEmp = null;
+//float bestResult = -1;
+//foreach ( var emp in employees)
+//{
+    //if (emp.Result >= bestResult)
+    //{
+        //bestResult = emp.Result;
+       // bestEmp = (Employee)emp;
+    //}
+//}
+//if (bestEmp != null)
 {
-    if (emp.Result >= bestResult)
-    {
-        bestResult = emp.Result;
-        bestEmp = (Employee)emp;
-    }
+    //Console.WriteLine($"Employee of the week : {bestEmp.Name} {bestEmp.Surname} ({bestEmp.Age})");
+    //Console.WriteLine($"BEST_RESULT_:_{bestResult}_scores");
 }
-if (bestEmp != null)
-{
-    Console.WriteLine($"Employee of the week : {bestEmp.Name} {bestEmp.Surname} ({bestEmp.Age})");
-    Console.WriteLine($"BEST_RESULT_:_{bestResult}_scores");
-}
+
+var employee5 = new Employee("Jan", "Dobosz", "39");
+employee5.AddGrade(2);
+employee5.AddGrade(2);
+employee5.AddGrade(6);
+var statistics = employee5.GetStatistics();
+Console.WriteLine($"Average :  {statistics.Average:N2}");
+Console.WriteLine($"Min:  {statistics.Min}");
+Console.WriteLine($"Max :  {statistics.Max}");
