@@ -1,48 +1,44 @@
 namespace ChalangeApp.Tests
 {
-    public class Tests
+    public class EmployeeTests
     {
-
         [Test]
-        public void WhenEmployeeCollectFiveGrades_ShouldReturnCorrectSum()
+        public void WhenGetStatisticsCalled_ShouldReturnCorrectMin()
         {
-            var emp3 = new Employee("Piotr", "Banach", "34");
-            emp3.AddGrade(0);
-            emp3.AddGrade(0);
-            emp3.AddGrade(1);
-            emp3.AddGrade(2);
-            emp3.AddGrade(2);
+            var employee5 = new Employee("Jan", "Dobosz", "39");
+            employee5.AddGrade(4);
+            employee5.AddGrade(5);
+            employee5.AddGrade(7);
 
-            var result = emp3.grades.Sum();
+            var statistics = employee5.GetStatistics();
 
-            Assert.AreEqual(5, result);
+            Assert.AreEqual(4, statistics.Min);
         }
+
         [Test]
-        public void WhenEmployeeCollectNegativePoints_ShouldReturnCorrectSum()
+        public void WhenGetStatisticsCalled_ShouldReturnCorrectMax()
         {
-            var emp3 = new Employee("Piotr", "Banach", "34");
-            emp3.AddGrade(0);
-            emp3.AddGrade(0);
-            emp3.AddGrade(-1);
-            emp3.AddGrade(-2);
-            emp3.AddGrade(-2);
+            var employee5 = new Employee("Jan", "Dobosz", "39");
+            employee5.AddGrade(4);
+            employee5.AddGrade(5);
+            employee5.AddGrade(7);
 
-            var result = emp3.grades.Sum();
+            var statistics = employee5.GetStatistics();
 
-            Assert.AreEqual(-5, result);
+            Assert.AreEqual(7, statistics.Max);
         }
+
         [Test]
-        public void WhenEmployeeCollectThreeSetOfZeroPoints_ShouldReturnCorrectSum()
+        public void WhenGatStatisticsCalled_ShouldReturnCorrectAverage()
         {
-            var emp3 = new Employee("Piotr", "Banach", "34");
-            emp3.AddGrade(0);
-            emp3.AddGrade(0);
-            emp3.AddGrade(0);
+            var employee5 = new Employee("Jan", "Dobosz", "39");
+            employee5.AddGrade(4);
+            employee5.AddGrade(5);
+            employee5.AddGrade(7);
 
-            var result = emp3.grades.Sum();
+            var statistics = employee5.GetStatistics();
 
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(Math.Round(5.33, 2), Math.Round(statistics.Average, 2));
         }
     }
-
 }

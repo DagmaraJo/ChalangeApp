@@ -34,8 +34,8 @@
                 statistics.Average += grade;
             }
 
-            //statistics.Average = statistics.Average / this.grades.Count;
-            statistics.Average /= this.grades.Count;         // to samo inny zapis
+            statistics.Average /= this.grades.Count;
+            
             return statistics;
         }
     }
