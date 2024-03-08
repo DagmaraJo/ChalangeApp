@@ -29,7 +29,7 @@ namespace ChalangeApp.Tests
         }
 
         [Test]
-        public void WhenGatStatisticsCalled_ShouldReturnCorrectAverage()
+        public void WhenGetStatisticsCalled_ShouldReturnCorrectAverage()
         {
             var employee5 = new Employee("Jan", "Dobosz", "39");
             employee5.AddGrade(4);
@@ -40,7 +40,53 @@ namespace ChalangeApp.Tests
 
             Assert.AreEqual(Math.Round(5.33, 2), Math.Round(statistics.Average, 2));
         }
+
+        [Test]
+        public void WhenEmployeeColectCharGrades_ShouldReturnCorrectAverage()
+        {
+            var employee = new Employee();
+            employee.AddGrade('a');
+            employee.AddGrade('b');
+            employee.AddGrade('c');
+            employee.AddGrade('d');
+            employee.AddGrade('e');
+
+
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(60, statistics.Average);
+        }
+
+        [Test]
+        public void WhenEmployeeColectCharGrades_ShouldReturnCorrectMax()
+        {
+            var employee = new Employee();
+            employee.AddGrade('A');
+            employee.AddGrade('B');
+            employee.AddGrade('C');
+            employee.AddGrade('D');
+            employee.AddGrade('E');
+
+
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(100, statistics.Max);
+        }
+
+        [Test]
+        public void WhenEmployeeColectMixedGrades_ShouldReturnCorrectMin()
+        {
+            var employee = new Employee();
+            employee.AddGrade('d');
+            employee.AddGrade('C');
+            employee.AddGrade(10);
+            employee.AddGrade(75);
+            employee.AddGrade('A');
+
+
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(10, statistics.Min);
+        }
     }
 }
-
-
