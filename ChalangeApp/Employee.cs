@@ -32,6 +32,8 @@
             } 
         }
 
+
+
         public void AddGrade(long grade) 
         {
             float gradeAsFloat = grade;
@@ -83,6 +85,10 @@
             if (float.TryParse(grade, out float result))
             {
                 this.AddGrade(result);
+            }
+            else if (char.TryParse(grade, out char resultLetter))
+            {
+                this.AddGrade(resultLetter);
             }
             else
             {

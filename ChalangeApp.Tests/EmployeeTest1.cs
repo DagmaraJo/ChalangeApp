@@ -100,12 +100,12 @@ namespace ChalangeApp.Tests
             employee.AddGrade('C');
             employee.AddGrade(50);
             employee.AddGrade(75);
-            employee.AddGrade('A');
+            employee.AddGrade("E");
 
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(40, statistics.Min);
+            Assert.AreEqual(20, statistics.Min);
         }
     }
 }
