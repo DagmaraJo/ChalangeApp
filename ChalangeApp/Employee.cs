@@ -11,16 +11,18 @@
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
+        public string Age { get; private set; }
 
         public Employee(string name, string surname, string age)
         {
             this.Name = name;
             this.Surname = surname;
+            this.Age = age;
         }
 
         public void AddGrade(float grade)
         {
-            if(grade >=0 && grade <= 100)
+            if (grade >=0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
@@ -54,23 +56,23 @@
             {
                 case 'A':
                 case 'a':
-                    AddGrade(100);
+                    this.AddGrade(100);
                     break;
                 case 'B':
                 case 'b':
-                    AddGrade(80);
+                    this.AddGrade(80);
                     break;
                 case 'C':
                 case 'c':
-                    AddGrade(60);
+                    this.AddGrade(60);
                     break;
                 case 'D':
                 case 'd':
-                    AddGrade(40);
+                    this.AddGrade(40);
                     break;
                 case 'E':
                 case 'e':
-                    AddGrade(20);
+                    this.AddGrade(20);
                     break;
                 default:
                     break;

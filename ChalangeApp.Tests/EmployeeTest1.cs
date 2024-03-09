@@ -61,17 +61,36 @@ namespace ChalangeApp.Tests
         public void WhenEmployeeColectCharGrades_ShouldReturnCorrectMax()
         {
             var employee = new Employee();
-            employee.AddGrade('A');
-            employee.AddGrade('B');
-            employee.AddGrade('C');
+            employee.AddGrade('G');
             employee.AddGrade('D');
+            employee.AddGrade('C');
+            employee.AddGrade('B');
             employee.AddGrade('E');
 
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(100, statistics.Max);
+            Assert.AreEqual(80, statistics.Max);
         }
+
+
+        [Test]
+        public void WhenEmployeeColectStringGrades_ShouldReturnCorrectMin()
+        {
+            var employee = new Employee();
+            employee.AddGrade("five");
+            employee.AddGrade("76");
+            employee.AddGrade("e");
+            employee.AddGrade("B");
+            employee.AddGrade("25");
+
+
+            var statistics = employee.GetStatistics();
+
+            Assert.AreEqual(20, statistics.Min);
+        }
+
+
 
         [Test]
         public void WhenEmployeeColectMixedGrades_ShouldReturnCorrectMin()
@@ -79,14 +98,14 @@ namespace ChalangeApp.Tests
             var employee = new Employee();
             employee.AddGrade('d');
             employee.AddGrade('C');
-            employee.AddGrade(10);
+            employee.AddGrade(50);
             employee.AddGrade(75);
             employee.AddGrade('A');
 
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(10, statistics.Min);
+            Assert.AreEqual(40, statistics.Min);
         }
     }
 }
