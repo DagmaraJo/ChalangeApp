@@ -4,7 +4,7 @@
     {
         public List<float> grades = new();
 
-
+      
         public Employee(string name, string surname, char sex)
             : base(name,surname,sex)
         {
