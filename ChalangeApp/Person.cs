@@ -10,6 +10,6 @@
 
         public string Name { get; private set; }
 
-        public char Sex { get;  }
+        public char Sex { get; private set; }
     }
 }
