@@ -4,13 +4,12 @@
     {
         public List<float> grades = new();
 
-      
         public Employee(string name, string surname, char sex)
-            : base(name,surname,sex)
+            : base(name, sex)
         {
-
-            var i = this.Sex;
+            this.Surname = surname;
         }
+        public string Surname { get; set; }
 
         public void AddGrade(float grade)
         {
