@@ -1,42 +1,39 @@
 ﻿namespace ChalangeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase   //: IEmployee
     {
         public List<float> grades = new();
 
-        public Employee (string name, string surname)
+        public EmployeeInMemory(string name, string surname)
+            : base(name, surname)
         {
-            this.Name = surname;
-            this.Surname = surname;
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
 
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)   //// w tej klasie obsługa ocen 1 w pamięci
         {
-            if (grade >=0 && grade <= 100)
+            if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
             }
             else
             {
                 throw new Exception("  invalid grade value !");
-            } 
+            }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             float gradeAsFloat = (float)grade;
             this.AddGrade(gradeAsFloat);
         }
 
-        public void AddGrade(int grade)
+        public override void AddGrade(int grade)
         {
             float gradeAsFloat = grade;
             this.AddGrade(gradeAsFloat);
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
@@ -65,7 +62,7 @@
             }
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -81,16 +78,16 @@
             }
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
             statistics.Max = float.MinValue;
             statistics.Min = float.MaxValue;
 
-            foreach( var grade in this.grades)
+            foreach (var grade in this.grades)
             {
-                if (grade >=0)
+                if (grade >= 0)
                 {
                     statistics.Max = Math.Max(statistics.Max, grade);
                     statistics.Min = Math.Min(statistics.Min, grade);
@@ -102,19 +99,19 @@
             switch (statistics.Average)
             {
                 case var average when average >= 80:
-                    statistics.AverageLetter = '5';
+                    statistics.AverageLetter = 'A';
                     break;
                 case var average when average >= 60:
-                    statistics.AverageLetter = '4';
+                    statistics.AverageLetter = 'B';
                     break;
                 case var average when average >= 40:
-                    statistics.AverageLetter = '3';
+                    statistics.AverageLetter = 'C';
                     break;
                 case var average when average >= 20:
-                    statistics.AverageLetter = '2';
+                    statistics.AverageLetter = 'D';
                     break;
                 default:
-                    statistics.AverageLetter = '1';
+                    statistics.AverageLetter = 'E';
                     break;
             }
 

@@ -1,18 +1,22 @@
 ﻿namespace ChalangeApp
 {
-    public interface IEmployee
+    public interface IEmployee  //co?
     {
         string Name { get; }
 
         string Surname { get; }
 
-        public void AddGrade(float grade);
+        void AddGrade(float grade);
 
-        public void AddGrade(char grade);
+        void AddGrade(double grade);
 
-        public void AddGrade(string grade);
+        void AddGrade(int grade);
 
-        public Statistics GetStatistics();
+        void AddGrade(char grade);
+
+        void AddGrade(string grade);
+
+        Statistics GetStatistics();
     }
 }
 

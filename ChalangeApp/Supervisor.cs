@@ -1,12 +1,18 @@
 ﻿namespace ChalangeApp
 {
-    public class Supervisor : IEmployee
+    public class Supervisor : IEmployee  // jak?
     {
         public List<float> grades = new();
 
-        public string Name => throw new NotImplementedException();
+        public Supervisor(string name, string surname)
+        {
+            Name = name;
+            Surname = surname;
+        }
 
-        public string Surname => throw new NotImplementedException();
+        public string Name { get; private set; }
+
+        public string Surname { get; private set; }
 
         public void AddGrade(float grade)
         {
@@ -123,9 +129,6 @@
 
             switch (statistics.Average)
             {
-                case 100:
-                    statistics.AverageLetter = '6';
-                    break;
                 case var average when average >= 80:
                     statistics.AverageLetter = '5';
                     break;
