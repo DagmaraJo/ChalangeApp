@@ -11,7 +11,7 @@
         {
         }
 
-        public override void AddGrade(float grade)  // w tej klasie obsługa ocen 2 po Memory w pliku
+        public override void AddGrade(float grade) 
         {
             if (grade >= 0 && grade <= 100)
             {
@@ -85,70 +85,50 @@
 
         public override Statistics GetStatistics()
         {
-            var gradesFromFile = this.ReadGradesFromFile;
-            var result = this.CountStatistics(gradesFromFile);
-            return result;
-        }
-
-        private List<float> ReadGradesFromFile()
-        {
-            var grades = new List<float>();
-            if (File.Exists($"{fileName}"))
+            var result = new Statistics();
+            result.Average = 0;
+            result.Max = float.MinValue;
+            result.Min = float.MaxValue;
             {
-                using (var reader = File.OpenText($"{fileName}"))
+                var gradesInFile = new List<float>();
+                if (File.Exists($"{fileName}"))
                 {
-                    var line = reader.ReadLine();
-                    while (line != null)
+                    using (var reader = File.OpenText($"{fileName}"))
                     {
-                        var number = float.Parse(line);
-                        grades.Add(number);
-                        line = reader.ReadLine();
+                        var line = reader.ReadLine();
+                        while (line != null)
+                        {
+                            var number = float.Parse(line);
+                            result.Max = Math.Max(result.Max, number);
+                            result.Min = Math.Min(result.Min, number);
+                            gradesInFile.Add(number);
+                            result.Average += number;
+                            line = reader.ReadLine();
+                        }
                     }
                 }
-            }
-            return grades;
-        }
+                result.Average /= gradesInFile.Count;
 
-        private Statistics CountStatistics(List<float> grades)
-        {
-            var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
-            foreach (var grade in grades)
-            {
-                if (grade >= 0)
+                switch (result.Average)
                 {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
+                    case var average when average >= 80:
+                        result.AverageLetter = 'A';
+                        break;
+                    case var average when average >= 60:
+                        result.AverageLetter = 'B';
+                        break;
+                    case var average when average >= 40:
+                        result.AverageLetter = 'C';
+                        break;
+                    case var average when average >= 20:
+                        result.AverageLetter = 'D';
+                        break;
+                    default:
+                        result.AverageLetter = 'E';
+                        break;
                 }
             }
-            statistics.Average /= grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 90:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 70:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 50:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 30:
-                    statistics.AverageLetter = 'D';
-                    break;
-                case var average when average >= 15:
-                    statistics.AverageLetter = 'E';
-                    break;
-                default:
-                    statistics.AverageLetter = 'O';
-                    break;
-            }
-            return statistics;
+            return result;
         }
     }
 }

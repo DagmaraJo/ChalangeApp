@@ -1,6 +1,6 @@
 ﻿namespace ChalangeApp
 {
-    public interface IEmployee  //co?
+    public interface IEmployee 
     {
         string Name { get; }
 

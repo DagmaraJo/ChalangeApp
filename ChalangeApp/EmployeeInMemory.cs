@@ -1,6 +1,6 @@
 ﻿namespace ChalangeApp
 {
-    public class EmployeeInMemory : EmployeeBase   //: IEmployee
+    public class EmployeeInMemory : EmployeeBase 
     {
         public List<float> grades = new();
 
@@ -9,7 +9,7 @@
         {
         }
 
-        public override void AddGrade(float grade)   //// w tej klasie obsługa ocen 1 w pamięci
+        public override void AddGrade(float grade) 
         {
             if (grade >= 0 && grade <= 100)
             {
