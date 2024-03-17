@@ -1,6 +1,8 @@
-﻿namespace ChalangeApp
+﻿using static ChalangeApp.EmployeeBase;
+
+namespace ChalangeApp
 {
-    public class Supervisor : IEmployee  // jak?
+    public class Supervisor : IEmployee 
     {
         public List<float> grades = new();
 
@@ -14,11 +16,17 @@
 
         public string Surname { get; private set; }
 
+        public event GradeAddedDelegate GradeAdded;
+
         public void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {

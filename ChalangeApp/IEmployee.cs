@@ -1,4 +1,6 @@
-﻿namespace ChalangeApp
+﻿using static ChalangeApp.EmployeeBase;
+
+namespace ChalangeApp
 {
     public interface IEmployee 
     {
@@ -15,6 +17,8 @@
         void AddGrade(char grade);
 
         void AddGrade(string grade);
+
+        public abstract event GradeAddedDelegate GradeAdded;
 
         Statistics GetStatistics();
     }

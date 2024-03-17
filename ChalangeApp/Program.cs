@@ -1,11 +1,18 @@
 ﻿using ChalangeApp;
 
-Console.WriteLine("Witamy w programie do oceny Pracowników");
+Console.WriteLine("Welcome to the company's RATING SYSTEM");
 Console.WriteLine("---------------------------------------");
 Console.WriteLine();
-//Console.WriteLine("Wprowadż imię i nazwisko Pracownika");
+Console.WriteLine("    provide employee details");
 //Console.ReadLine();
-var employee = new EmployeeInFile("Jan", "Majewski");
+var employee = new Supervisor("Jan", "Majewski");
+employee.GradeAdded += EmployeeGradeAdded;
+Console.ReadLine();
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("the new rating is already in the SYSTEM");
+}
+
 //Console.WriteLine("   podaj ocenę Pracownika");
 //Console.ReadLine();
 //employee.AddGrade(0.8f);
@@ -15,7 +22,7 @@ var employee = new EmployeeInFile("Jan", "Majewski");
 //employee.AddGrade("d");
 while (true)
 {
-    Console.WriteLine("   podaj kolejną ocenę Pracownika:");
+    Console.WriteLine("   add another rating");
     var input = Console.ReadLine();
     if (input == "q")
     {
