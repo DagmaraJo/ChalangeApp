@@ -2,7 +2,7 @@
 
 namespace ChalangeApp
 {
-    public class Supervisor : IEmployee 
+    public class Supervisor : IEmployee
     {
         public List<float> grades = new();
 
@@ -120,41 +120,14 @@ namespace ChalangeApp
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-
             foreach (float grade in this.grades)
             {
                 if (grade >= 0)
                 {
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Average += grade;
+                    statistics.AddGrade(grade);
                 }
             }
-            statistics.Average /= this.grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = '5';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = '4';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = '3';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = '2';
-                    break;
-                default:
-                    statistics.AverageLetter = '1';
-                    break;
-            }
-
             return statistics;
         }
-    }  
+    }
 }

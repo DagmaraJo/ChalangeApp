@@ -13,13 +13,6 @@ void EmployeeGradeAdded(object sender, EventArgs args)
     Console.WriteLine("the new rating is already in the SYSTEM");
 }
 
-//Console.WriteLine("   podaj ocenę Pracownika");
-//Console.ReadLine();
-//employee.AddGrade(0.8f);
-//employee.AddGrade(35);
-//employee.AddGrade(3.141592);
-//employee.AddGrade('B');
-//employee.AddGrade("d");
 while (true)
 {
     Console.WriteLine("   add another rating");
