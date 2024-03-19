@@ -93,7 +93,7 @@
             {
                 if (grade >= 0)
                 {
-                    
+                    statistics.AddGrade(grade);
                 }
             }
 
