@@ -4,7 +4,7 @@ Console.WriteLine("Welcome to the company's RATING SYSTEM");
 Console.WriteLine("---------------------------------------");
 Console.WriteLine();
 Console.WriteLine("    provide employee details");
-//Console.ReadLine();
+Console.ReadLine();
 var employee = new Supervisor("Jan", "Majewski");
 employee.GradeAdded += EmployeeGradeAdded;
 Console.ReadLine();
